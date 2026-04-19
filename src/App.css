@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Nunito:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary: #9b3fa3;
+  --primary-light: #c56ecf;
+  --primary-dark: #6d2475;
+  --accent: #f06292;
+  --accent-light: #f8bbd9;
+  --pink: #e91e8c;
+  --yellow: #ffd54f;
+  --green: #81c784;
+  --white: #ffffff;
+  --panel-bg: rgba(255, 255, 255, 0.82);
+  --panel-bg-dark: rgba(255, 255, 255, 0.72);
+  --text-dark: #2d1b33;
+  --text-mid: #5c3d6e;
+  --text-soft: #8e6fa0;
+  --shadow: 0 8px 32px rgba(155, 63, 163, 0.18);
+  --shadow-card: 0 4px 20px rgba(155, 63, 163, 0.13);
+  --border-radius: 16px;
+  --nav-height: 64px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  background-image: url('/images/backgroundImage.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.app-wrapper::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(155, 63, 163, 0.35) 0%,
+    rgba(240, 98, 146, 0.2) 50%,
+    rgba(155, 63, 163, 0.3) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-content {
+  padding-top: var(--nav-height);
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Panel */
+.content-panel {
+  background: var(--panel-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 20px;
+  border: 1.5px solid rgba(255,255,255,0.6);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 1100px;
+  margin: 32px 16px;
+  padding: 36px 32px;
+}
+
+/* Panel header */
+.panel-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.panel-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--primary-dark);
+  margin-bottom: 6px;
+}
+
+.panel-subtitle {
+  font-size: 1rem;
+  color: var(--text-mid);
+  font-weight: 400;
+}
+
+.easter-emoji-row {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  letter-spacing: 4px;
+}
+
+/* Cards grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Person card */
+.person-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  width: 100%;
+  max-width: 260px;
+  border: 1.5px solid rgba(155, 63, 163, 0.1);
+}
+
+.person-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 36px rgba(155, 63, 163, 0.22);
+  border-color: var(--primary-light);
+}
+
+.person-card-img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.person-card-body {
+  padding: 14px 16px 16px;
+  text-align: center;
+}
+
+.person-card-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 5px;
+}
+
+.person-card-gender {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin-bottom: 10px;
+}
+
+.gender-icon {
+  margin-right: 4px;
+}
+
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  color: white;
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(155,63,163,0.25);
+}
+
+/* Locsolas meeting card */
+.meeting-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-card);
+  padding: 18px 20px;
+  border: 1.5px solid rgba(155, 63, 163, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.meeting-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(155, 63, 163, 0.18);
+}
+
+.meeting-person-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meeting-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  border: 2px solid var(--primary-light);
+  flex-shrink: 0;
+}
+
+.meeting-person-info {
+  flex: 1;
+}
+
+.meeting-person-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.meeting-person-gender {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+}
+
+.meeting-kolni-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(155, 63, 163, 0.06);
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+
+.kolni-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.kolni-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  background: rgba(155, 63, 163, 0.12);
+  border-radius: 8px;
+  padding: 2px 10px;
+}
+
+.meeting-bottom-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.vers-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  background: rgba(240, 98, 146, 0.08);
+  border-radius: 8px;
+  padding: 3px 10px;
+  font-weight: 600;
+}
+
+.meeting-date {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  color: var(--text-soft);
+}
+
+/* Back button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(155,63,163,0.12);
+  color: var(--primary-dark);
+  border: none;
+  border-radius: 20px;
+  padding: 7px 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.back-btn:hover {
+  background: rgba(155,63,163,0.22);
+}
+
+/* Locsolt detail header */
+.locsolt-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.locsolt-header-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  border: 3px solid var(--primary-light);
+  box-shadow: 0 4px 16px rgba(155,63,163,0.2);
+}
+
+.locsolt-header-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--primary-dark);
+}
+
+.locsolt-header-sub {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 2px;
+}
+
+/* Search results */
+.search-count {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.no-results {
+  text-align: center;
+  font-style: italic;
+  color: var(--text-soft);
+  font-size: 1rem;
+  padding: 30px 0;
+}
+
+/* Loading / error */
+.loading-state, .error-state {
+  text-align: center;
+  padding: 60px 0;
+  color: var(--text-mid);
+  font-size: 1.1rem;
+}
+
+.loading-dots::after {
+  content: '';
+  animation: dots 1.4s infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60%, 100% { content: '...'; }
+}
+
+/* Search result card with locsolo + locsolt side by side */
+.search-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-card);
+  padding: 16px 18px;
+  border: 1.5px solid rgba(155, 63, 163, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search-persons-row {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.search-person-block {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.search-arrow {
+  color: var(--primary-light);
+  font-size: 1.2rem;
+  align-self: center;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .content-panel {
+    margin: 16px 10px;
+    padding: 22px 14px;
+  }
+  .panel-title {
+    font-size: 1.5rem;
+  }
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    gap: 12px;
+  }
+  .person-card-img {
+    height: 140px;
+  }
+  .locsolt-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .locsolt-header-sub {
+    justify-content: center;
+  }
+}
